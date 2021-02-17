@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>GroupWork Week 4</title>
+
+    <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+
+    <!-- Using via Google Web Fonts -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- https://tailwindcss.com/docs/installation -->
+
+    <!-- Using Tailwind via CDN -->
+
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+    <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+
+    <!-- Vue CDN -->
+
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<!-- <i class="material-icons">favorite</i> -->
+
+<body class="bg-fixed bg-gradient-to-tr from-green-400 via-pink-500 to-indigo-500">
+
+    <div id="app" class="w-full h-full ">
+        <div class="">
+            <div class="text-4xl text-center py-10 flex justify-evenly">
+                <h1 class="bg-gray-100 p-2 rounded-lg shadow-inner">Gallery Count ( {{countpic}} ) </h1>
+                <h1 class="bg-gray-100 p-2 rounded-lg shadow-inner">Like Count ( {{countlike}} )</h1>
+            </div>
+            <div class="flex justify-center cursor-pointer">
+                <div v-on:click="togglesearchon()" v-show="search.searchOn"
+                    class="p-1 bg-gray-100 rounded-lg hover:bg-gray-300">
+                    <span class="material-icons md-48">
+                        search
+                    </span>
+                </div>
+                <input v-model="searchtext" v-show="search.searchBar"
+                    class="text-center border border-transparent focus:ring-2 w-1/3 bg-gray-100 rounded-l-lg"
+                    placeholder="  Search Here !!!" />
+                <div v-on:click="togglesearchoff()" v-show="search.searchBar"
+                    class="p-1 bg-gray-100 rounded-r-lg hover:bg-gray-300">
+                    cancel
+                </div>
+            </div>
+        </div>
+        <div class="grid justify-items-center space-y-4">
+            <div v-show="havetext">Search Results : {{filterpic}}</div>
+            <div v-show="haveResult" class="text-5xl">NO FOUND</div>
+            <div v-show="viewpic.showviewpic" class="text-center">
+                <div v-on:click="toggleviewoff()" class="cursor-pointer bg-red-500 rounded-t-lg hover:bg-red-300 transition duration-500">
+                    <span class="material-icons md-48">
+                        close
+                        </span>
+                </div>
+                <img v-bind:src="viewpic.src">
+                <div class="bg-gray-100 rounded-b-lg">
+                    <p class="text-2xl overflow-clip z-1">{{viewpic.text}}</p>
+                </div>
+            </div>
+            <div class="w-1/2">
+                <ul v-for="(pic,index) in chosenpic">
+                    
+                    <li v-show="showpic"
+                    :class="[pic.like ? 'group cursor-pointer shadow-inner flex bg-pink-300 hover:bg-pink-400 transition duration-500 rounded-lg m-4':'group cursor-pointer shadow-inner flex bg-gray-200 hover:bg-gray-400 transition duration-500 rounded-lg m-4']">
+                        <img @dblclick="toggleview(index)"
+                            class="h-1/2 w-1/2 rounded-l-lg group-hover: transition duration-500"
+                            v-bind:src="pic.src" class="justify-start">
+                        <div  class="grid text-center space-y-4 my-auto mx-auto">
+                            <div class="">
+                                <p class="text-2xl overflow-clip z-1">{{pic.text}}</p>
+                            </div>
+                            <div v-on:click="togglelike(index)" :class="[pic.like ? 'text-white rounded-lg my-auto ' : 'my-auto rounded-lg hover:bg-pink-400' ]">
+                                <i class="material-icons">favorite</i>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- my main.js -->
+
+    <script src="./main.js"></script>
+
+</body>
+
+</html>
