@@ -33,7 +33,7 @@
 
     <div id="app" class="w-full h-full ">
         <div class="">
-            <div class="text-4xl text-center py-10 flex justify-evenly">
+            <div class="text-3xl text-center py-9 flex justify-evenly">
                 <h1 class="bg-gray-100 p-2 rounded-lg shadow-inner">Gallery Count ( {{countpic}} ) </h1>
                 <h1 class="bg-gray-100 p-2 rounded-lg shadow-inner">Like Count ( {{countlike}} )</h1>
             </div>
@@ -55,7 +55,7 @@
         </div>
         <div class="grid justify-items-center space-y-4">
             <div v-show="havetext">Search Results : {{filterpic}}</div>
-            <div v-show="haveResult" class="text-5xl">NO FOUND</div>
+            <div v-show="haveResult" class="text-5xl bg-gray-100 p-2 rounded-lg shadow-inner">NO FOUND</div>
 
             <div v-show="viewpic.showviewpic" class="flex justify-center text-center bg-black p-10 rounded-lg">
                 <div class="w-3/4">
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <div class="w-1/2">
+            <div class=" grid grid-cols-2">
                 <ul v-for="(pic,index) in chosenpic">
                     <li v-show="showpic"
                         :class="[pic.like ? 'group cursor-pointer shadow-inner flex bg-pink-300 hover:bg-pink-400 transition duration-500 rounded-lg m-4':'group cursor-pointer shadow-inner flex bg-gray-200 hover:bg-gray-400 transition duration-500 rounded-lg m-4']">
