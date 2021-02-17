@@ -34,7 +34,7 @@ const app = {
             this.search.searchBar = !this.search.searchBar
         },
         togglesearchoff() {
-            this.searchon();
+            this.togglesearchon();
             this.searchtext = ''
         },
         toggleview(index) {
@@ -42,7 +42,7 @@ const app = {
             this.viewpic.src = this.pics[index].src
             this.viewpic.text = this.pics[index].text
             this.viewpic.like = this.pics[index].like
-            this.showpic = !this.showpic
+            // this.showpic = !this.showpic
             this.viewpic.showviewpic = !this.viewpic.showviewpic
             this.tempindex = index
 
@@ -50,7 +50,7 @@ const app = {
         toggleviewoff() {
             this.search.searchOn = !this.search.searchOn
             this.viewpic.showviewpic = !this.viewpic.showviewpic
-            this.showpic = !this.showpic
+            // this.showpic = !this.showpic
         }
     },
     computed: {

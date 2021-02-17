@@ -48,7 +48,7 @@
                     class="text-center border border-transparent focus:ring-2 w-1/3 bg-gray-100 rounded-l-lg"
                     placeholder="  Search Here !!!" />
                 <div v-on:click="togglesearchoff()" v-show="search.searchBar"
-                    class="p-1 bg-gray-100 rounded-r-lg hover:bg-gray-300">
+                    class="p-1 bg-red-500 rounded-r-lg hover:bg-red-300">
                     cancel
                 </div>
             </div>
@@ -56,30 +56,35 @@
         <div class="grid justify-items-center space-y-4">
             <div v-show="havetext">Search Results : {{filterpic}}</div>
             <div v-show="haveResult" class="text-5xl">NO FOUND</div>
-            <div v-show="viewpic.showviewpic" class="text-center">
-                <div v-on:click="toggleviewoff()" class="cursor-pointer bg-red-500 rounded-t-lg hover:bg-red-300 transition duration-500">
-                    <span class="material-icons md-48">
-                        close
+
+            <div v-show="viewpic.showviewpic" class="flex justify-center text-center bg-black p-10 rounded-lg">
+                <div class="w-3/4">
+                    <div v-on:click="toggleviewoff()"
+                        class="cursor-pointer bg-red-500 rounded-t-lg hover:bg-red-300 transition duration-500">
+                        <span class="material-icons md-48">
+                            close
                         </span>
-                </div>
-                <img v-bind:src="viewpic.src">
-                <div class="bg-gray-100 rounded-b-lg">
-                    <p class="text-2xl overflow-clip z-1">{{viewpic.text}}</p>
+                    </div>
+                    <img class="" v-bind:src="viewpic.src">
+                    <div class="bg-gray-100 rounded-b-lg">
+                        <p class="text-2xl overflow-clip z-1">{{viewpic.text}}</p>
+                    </div>
                 </div>
             </div>
+
             <div class="w-1/2">
                 <ul v-for="(pic,index) in chosenpic">
-                    
                     <li v-show="showpic"
-                    :class="[pic.like ? 'group cursor-pointer shadow-inner flex bg-pink-300 hover:bg-pink-400 transition duration-500 rounded-lg m-4':'group cursor-pointer shadow-inner flex bg-gray-200 hover:bg-gray-400 transition duration-500 rounded-lg m-4']">
+                        :class="[pic.like ? 'group cursor-pointer shadow-inner flex bg-pink-300 hover:bg-pink-400 transition duration-500 rounded-lg m-4':'group cursor-pointer shadow-inner flex bg-gray-200 hover:bg-gray-400 transition duration-500 rounded-lg m-4']">
                         <img @dblclick="toggleview(index)"
-                            class="h-1/2 w-1/2 rounded-l-lg group-hover: transition duration-500"
-                            v-bind:src="pic.src" class="justify-start">
-                        <div  class="grid text-center space-y-4 my-auto mx-auto">
+                            class="h-1/2 w-1/2 rounded-l-lg group-hover: transition duration-500" v-bind:src="pic.src"
+                            class="justify-start">
+                        <div class="grid text-center space-y-4 my-auto mx-auto">
                             <div class="">
                                 <p class="text-2xl overflow-clip z-1">{{pic.text}}</p>
                             </div>
-                            <div v-on:click="togglelike(index)" :class="[pic.like ? 'text-white rounded-lg my-auto ' : 'my-auto rounded-lg hover:bg-pink-400' ]">
+                            <div v-on:click="togglelike(index)"
+                                :class="[pic.like ? 'text-white rounded-lg my-auto ' : 'my-auto rounded-lg hover:bg-pink-400' ]">
                                 <i class="material-icons">favorite</i>
                             </div>
                         </div>
