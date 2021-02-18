@@ -28,6 +28,7 @@ const app = {
     methods: {
         togglelike(index) {
             this.pics[index].like = !this.pics[index].like
+            this.viewpic.like = !this.viewpic.like
         },
         togglesearchon() {
             this.search.searchOn = !this.search.searchOn
@@ -38,19 +39,14 @@ const app = {
             this.searchtext = ''
         },
         toggleview(index) {
-            this.search.searchOn = !this.search.searchOn
             this.viewpic.src = this.pics[index].src
             this.viewpic.text = this.pics[index].text
             this.viewpic.like = this.pics[index].like
-            // this.showpic = !this.showpic
             this.viewpic.showviewpic = !this.viewpic.showviewpic
             this.tempindex = index
-
         },
         toggleviewoff() {
-            this.search.searchOn = !this.search.searchOn
             this.viewpic.showviewpic = !this.viewpic.showviewpic
-            // this.showpic = !this.showpic
         }
     },
     computed: {

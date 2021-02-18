@@ -31,7 +31,27 @@
 
 <body class="bg-fixed bg-gradient-to-tr from-green-400 via-pink-500 to-indigo-500">
 
-    <div id="app" class="w-full h-full ">
+    <div id="app" class="w-full h-full">
+        <div class="flex justify-center">
+        <div v-show="viewpic.showviewpic" class="flex justify-center text-center bg-black bg-opacity-80 py-28 px-80 fixed ">
+            <div class="w-3/4 ">
+                <div v-on:click="toggleviewoff()"
+                    class="cursor-pointer bg-red-500 rounded-t-lg hover:bg-red-300 transition duration-500">
+                    <span class="material-icons md-48">
+                        close
+                    </span>
+                </div>
+                <img class="" v-bind:src="viewpic.src">
+                <div v-on:click="togglelike(tempindex)" :class="[viewpic.like ? 'bg-pink-300 hover:bg-pink-400 rounded-b-lg cursor-pointer transition duration-500':'bg-gray-100 hover:bg-pink-400 rounded-b-lg cursor-pointer transition duration-500']">
+                    <p class="text-2xl overflow-clip z-1">
+                        <a v-show="viewpic.like" class="text-white"><i class="material-icons">favorite</i></a>
+                        {{viewpic.text}} 
+                        <a v-show="viewpic.like" class="text-white"><i class="material-icons">favorite</i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="">
             <div class="text-3xl text-center py-9 flex justify-evenly">
                 <h1 class="bg-gray-100 p-2 rounded-lg shadow-inner">Gallery Count ( {{countpic}} ) </h1>
@@ -53,24 +73,10 @@
                 </div>
             </div>
         </div>
+        
         <div class="grid justify-items-center space-y-4">
             <div v-show="havetext">Search Results : {{filterpic}}</div>
             <div v-show="haveResult" class="text-5xl bg-gray-100 p-2 rounded-lg shadow-inner">NO FOUND</div>
-
-            <div v-show="viewpic.showviewpic" class="flex justify-center text-center bg-black p-10 rounded-lg">
-                <div class="w-3/4">
-                    <div v-on:click="toggleviewoff()"
-                        class="cursor-pointer bg-red-500 rounded-t-lg hover:bg-red-300 transition duration-500">
-                        <span class="material-icons md-48">
-                            close
-                        </span>
-                    </div>
-                    <img class="" v-bind:src="viewpic.src">
-                    <div class="bg-gray-100 rounded-b-lg">
-                        <p class="text-2xl overflow-clip z-1">{{viewpic.text}}</p>
-                    </div>
-                </div>
-            </div>
 
             <div class=" grid grid-cols-2">
                 <ul v-for="(pic,index) in chosenpic">
@@ -84,7 +90,7 @@
                                 <p class="text-2xl overflow-clip z-1">{{pic.text}}</p>
                             </div>
                             <div v-on:click="togglelike(index)"
-                                :class="[pic.like ? 'text-white rounded-lg my-auto ' : 'my-auto rounded-lg hover:bg-pink-400' ]">
+                                :class="[pic.like ? 'text-white rounded-lg my-auto shadow-2xl' : 'text-pink-200 my-auto rounded-lg shadow-2xl hover:bg-pink-400' ]">
                                 <i class="material-icons">favorite</i>
                             </div>
                         </div>
