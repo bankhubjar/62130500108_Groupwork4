@@ -21,12 +21,12 @@ const app = {
                 src: '',
                 text: '',
                 like: false,
-                tempindex: null
             }
         }
     },
     methods: {
-        togglelike(index) {
+        togglelike(text) {
+            const index = this.pics.findIndex(pic => pic.text == text);
             this.pics[index].like = !this.pics[index].like
             this.viewpic.like = !this.viewpic.like
         },
@@ -38,12 +38,12 @@ const app = {
             this.togglesearchon();
             this.searchtext = ''
         },
-        toggleview(index) {
+        toggleview(text) {
+            const index = this.pics.findIndex(pic => pic.text == text);
             this.viewpic.src = this.pics[index].src
             this.viewpic.text = this.pics[index].text
             this.viewpic.like = this.pics[index].like
             this.viewpic.showviewpic = !this.viewpic.showviewpic
-            this.tempindex = index
         },
         toggleviewoff() {
             this.viewpic.showviewpic = !this.viewpic.showviewpic
