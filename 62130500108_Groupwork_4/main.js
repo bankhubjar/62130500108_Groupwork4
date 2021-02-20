@@ -61,7 +61,7 @@ const app = {
             this.searchtext != '' ? this.havetext = true : this.havetext = false
             return this.searchtext
         },
-        chosenpic() {
+        Getpic() {
             this.haveResult = !this.picsearch.length
             return this.picsearch ? this.picsearch : this.pics;
         },

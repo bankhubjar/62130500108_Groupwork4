@@ -83,7 +83,7 @@
             <div v-show="haveResult" class="text-5xl bg-gray-100 p-2 rounded-lg shadow-inner">NO FOUND</div>
 
             <div class=" grid grid-cols-2">
-                <ul v-for="(pic,index) in chosenpic">
+                <ul v-for="(pic,index) in Getpic">
                     <li v-show="showpic"
                         :class="[pic.like ? 'group cursor-pointer shadow-inner flex bg-pink-300 hover:bg-pink-400 transition duration-500 rounded-lg m-4':'group cursor-pointer shadow-inner flex bg-gray-200 hover:bg-gray-400 transition duration-500 rounded-lg m-4']">
                         <img @dblclick="toggleview(pic.text)"
