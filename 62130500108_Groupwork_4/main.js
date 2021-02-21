@@ -21,6 +21,7 @@ const app = {
                 src: '',
                 text: '',
                 like: false,
+                tempindex: null
             }
         }
     },
@@ -44,9 +45,28 @@ const app = {
             this.viewpic.text = this.pics[index].text
             this.viewpic.like = this.pics[index].like
             this.viewpic.showviewpic = !this.viewpic.showviewpic
+            this.viewpic.tempindex = index
         },
         toggleviewoff() {
             this.viewpic.showviewpic = !this.viewpic.showviewpic
+        },
+        nextview() {
+            if(this.viewpic.tempindex>=this.pics.length){
+                this.viewpic.tempindex = 0
+            }
+            const index = this.viewpic.tempindex++
+            this.viewpic.src = this.pics[index].src
+            this.viewpic.text = this.pics[index].text
+            this.viewpic.like = this.pics[index].like 
+        },
+        beforeview() {
+            if(this.viewpic.tempindex<=0){
+                this.viewpic.tempindex = this.pics.length-1
+            }
+            const index = this.viewpic.tempindex--
+            this.viewpic.src = this.pics[index].src
+            this.viewpic.text = this.pics[index].text
+            this.viewpic.like = this.pics[index].like 
         }
     },
     computed: {
